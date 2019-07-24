@@ -1,0 +1,17 @@
+---
+# tasks file for dbserver
+
+- name: Install mariadb
+  yum:
+    name: mariadb-server
+    state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Start mariadb
+  service:
+    name: mariadb
+    state: started
+    enabled: yes
+  when: ansible_os_family == "RedHat"
+
+...

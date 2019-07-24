@@ -1,0 +1,16 @@
+centos2 ansible_ssh_host=10.0.2.4 ansible_python_interpreter=/usr/bin/python2.7
+centos3 ansible_ssh_host=10.0.2.5 ansible_python_interpreter=/usr/bin/python2.7
+
+[c1]
+centos2
+
+[c2]
+centos3
+
+[datacenter:children]
+c1
+c2
+
+[datacenter:vars]
+ansible_ssh_user=root
+

@@ -1,0 +1,7 @@
+---
+# handlers file for dbserver
+
+- name: Reload firewalld
+  command: firewall-cmd --reload
+  when: ansible_os_family == "RedHat"
+

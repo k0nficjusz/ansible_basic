@@ -1,0 +1,12 @@
+---
+# vars file for webserver
+
+http_port: 80
+max_clients: 5
+doc_dir: /ansible/
+doc_root: /var/www/html/ansible/
+
+#vars_prompt in inxex.html
+web_index: Variable for web
+
+...

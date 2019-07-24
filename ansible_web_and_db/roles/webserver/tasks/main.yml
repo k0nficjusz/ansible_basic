@@ -1,0 +1,57 @@
+---
+# tasks file for webserver
+
+- name: Ensure Apache is installed
+  yum:
+    name: httpd
+    state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Start Apache
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+  when: ansible_os_family == "RedHat"
+
+- name: Deploy configuration file httpd.conf
+  template: src=httpd.j2 dest=/etc/httpd/conf/httpd.conf
+  notify:
+    - Restart Apache
+  when: ansible_os_family == "RedHat"
+
+- name: Create a direcory for Ansible website
+  file:
+    path: "{{ doc_root }}/ansible"
+    state: directory
+  when: ansible_os_family == "RedHat"
+
+- name: Copy Ansible website fies
+  template:
+    src: templates/index.j2
+    dest: "{{ doc_root }}/index.html"
+  when: ansible_os_family == "RedHat"
+
+- name: Open port 443
+  firewalld:
+    port: 443/tcp
+    permanent: yes
+    state: enabled
+  notify:
+      - Reload firewalld
+  when: ansible_os_family == "RedHat"
+
+- name: Open port 80
+  firewalld:
+    port: 80/tcp
+    permanent: yes
+    state: enabled
+  notify:
+      - Reload firewalld
+  when: ansible_os_family == "RedHat"
+
+- name: Check that you can connect (GET) to page ANSIBLE and it returns a status 200
+  uri:
+    url: http://10.0.2.4/ansible
+
+...
