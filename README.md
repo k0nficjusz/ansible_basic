@@ -14,13 +14,15 @@ All virtual machines and Ansible host must be in the same network.
 2. Install Ansible
 - sudo yum install epel-release
 - sudo yum install ansible
-3. Clone repository
-4. Generate ssh *.pub key
+3. Install git
+- yum install git
+4. Clone repository
+5. Generate ssh *.pub key
 - ssh-keygen -f ansiblekey
-5. Move your generated keys to ~/.ssh/ directory
+6. Move your generated keys to ~/.ssh/ directory
 - mv ansiblekey ~/.ssh/
 - mv ansiblekey.pub ~/.ssh/
-6.Add private key identities to the authentication agent
+7.Add private key identities to the authentication agent
 - ssh-add ~/.ssh/ansiblekey
 
 ### Hosts
