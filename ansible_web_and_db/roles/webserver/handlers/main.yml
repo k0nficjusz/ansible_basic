@@ -5,3 +5,6 @@
   service:
     name: httpd
     state: restarted
+
+- name: Reload firewalld
+  command: firewall-cmd --reload
