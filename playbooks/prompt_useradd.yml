@@ -1,0 +1,24 @@
+---
+- hosts: datacenter
+  vars_prompt:
+  - name: "username"
+    prompt: "Please insert username"
+    private: no
+  - name: "surname"
+    prompt: "Please insert Name and Surname. For example: 'Jan Kowalski'"
+    private: no
+  - name: "pass"
+    prompt: "Please insert password for user"
+    private: no
+    
+
+  tasks:
+  - name: Add new user with wheel group
+    user:
+      comment: "{{ surname }}"
+      name: "{{ username }}"
+      password: "{{ pass | password_hash('sha512') }}"
+      shell: /bin/bash
+      groups: wheel
+      append: yes
+
