@@ -1,0 +1,9 @@
+---
+# tasks file for windows
+
+
+- name: Ensure IIS web server is installed
+  win_feature:
+    name: Web-Server
+    state: present
+
