@@ -3,3 +3,6 @@
 - hosts: win
   roles:
   - windows
+  - common
+
+...

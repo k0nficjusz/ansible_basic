@@ -1,0 +1,17 @@
+---
+
+- hosts: win
+  roles:
+  - windows
+  - common
+
+- hosts: linux
+  roles:
+  - linux
+  - common
+
+- hosts: 192.168.57.12
+  roles:
+  - database
+
+...

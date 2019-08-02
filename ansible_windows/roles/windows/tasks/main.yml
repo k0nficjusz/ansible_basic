@@ -6,4 +6,17 @@
   win_feature:
     name: Web-Server
     state: present
+  when: ansible_os_family == "Windows"
 
+- name: Deploy index file
+  template:
+    src: iisstart.j2
+    dest: c:\inetpub\wwwroot\iisstart.htm
+
+- name: Ensure notepad++ is installed using chocolatey
+  win_chocolatey:
+    name: notepadplusplus
+    state: present
+   
+- include: localadmin.yml
+  statis: no

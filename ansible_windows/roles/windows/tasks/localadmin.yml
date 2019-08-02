@@ -1,0 +1,11 @@
+---
+
+- name: Ensure localadmin is created
+  win_user:
+    name: localadmin
+    fullname: Ansible localadmin
+    password: { localadminpass }
+    description: User created by ansible
+    groups: [Administrators]
+    password_never_expired: yes
+    state: present

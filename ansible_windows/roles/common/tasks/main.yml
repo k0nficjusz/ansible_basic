@@ -1,0 +1,16 @@
+---
+# tasks file for common
+
+- name: Set proxy with a bypass list
+  win_inet_proxy:
+    proxy: http://proxy.posti.fi:8086
+    bypass:
+    - <-loopback>
+    - 192.168.57.10
+    - 192.168.57.11
+    - 192.168.57.12
+    - 192.168.57.13
+  when: ansible_os_family == "Windows"
+
+
+
