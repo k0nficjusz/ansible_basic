@@ -7,3 +7,15 @@
     name: nagios
     state: present
 
+- name: Ensure vim is installed
+  yum:
+    name: vim
+    state: present
+
+- name: Ensure git is installed
+  yum:
+    name: git
+    state: present
+
+...
+
