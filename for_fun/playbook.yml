@@ -19,6 +19,6 @@
 
 
   - debug:
-      var: test
+      var: test.stdout
 
 
