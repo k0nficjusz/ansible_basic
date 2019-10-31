@@ -1,6 +1,6 @@
 ---
 
 - hosts: linux
-  sudo: yes
+  become: yes
   roles:
   - linux
