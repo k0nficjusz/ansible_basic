@@ -22,6 +22,7 @@ All virtual machines and Ansible host must be in the same network.
 6. Move your generated keys to ~/.ssh/ directory
 - mv ansiblekey ~/.ssh/
 - mv ansiblekey.pub ~/.ssh/
+
 7.Add private key identities to the authentication agent
 - ssh-add ~/.ssh/ansiblekey
 
